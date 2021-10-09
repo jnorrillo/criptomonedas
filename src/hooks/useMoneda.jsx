@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React, { Fragment, useState } from "react";
+import PropType from "prop-types";
 
 const Label = styled.label`
     font-family: 'Bebas Neue', cursive;
@@ -8,14 +9,14 @@ const Label = styled.label`
     font-weight: bold;
     font-size: 2.4rem;
     margin-top: 2rem;
-    display: block;
+    display: block; //Para que tome todo el espacio disponible
 `;
 
 const Select = styled.select`
     width: 100%;
     display: block;
     padding: .8rem;
-    -wetkit-appearance: none;
+    -wetkit-appearance: none; //para que funcionen los styles en el select
     border-radius: 10px;
     border: none;
     font-size: 1.2rem;
@@ -42,6 +43,12 @@ const useMoneda = (label, stateInicial, opciones) => {
 
   //Retornar state, interfaz y funcion que modifica el state
   return [state, Seleccionar, actualizarState];
+};
+
+useMoneda.propType = {
+  label: PropType.string.isRequired,
+  stateInicial: PropType.string.isRequired,
+  opciones: PropType.object.isRequired,
 };
 
 export default useMoneda;
